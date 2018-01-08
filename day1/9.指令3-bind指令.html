@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .red{
+            color:red
+        }
+        .blue{
+            color:blue
+        }
+    </style>
+    <!-- M->V -->
+    <div id="demo">
+        <!-- name="{{name}}" -->
+        <p :name="name">{{name}}</p>
+        <p v-bind:name="name">{{name}}</p>
+        <p :style="style">{{name}}</p>
+        <button @click="makeSize">OK</button>
+        <p :class="{'red':bool,'blue':!bool}">{{name}}</p>
+        <button @click="isRed">OK</button>
+    </div>
+    <div class="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        // 1.起手式
+        new Vue({
+            // element 选择器
+            el: "#demo", //id和class选择器
+            data: {
+                name: "laozhao",
+                // sass
+                style: {
+                    color: 'red',
+                    fontSize: '44px',//驼峰写法
+                    backgroundColor:'yellow'
+                },
+                bool:false
+            },//数据模型,
+            methods:{
+                makeSize:function(){
+                    this.style.fontSize = "55px"
+                    this.style.color = "blue"
+                },
+                isRed:function(){
+                    this.bool = !this.bool
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- vue -->
+    <div id="demo">
+        <p style="color:red">1.v:on 绑定事件</p>
+        <p v-text="name"></p>
+        <button v-on:click="test()">OK</button>
+        <!-- @click == onclick
+             @keyup == onkeyup
+        -->
+        <button @click="test">OK</button>
+
+        <p style="color:red">1.v:on 绑定事件</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var demo = new Vue({
+            // 作用域
+            el: "#demo",
+            // 数据模型 M
+            data: {
+                name: "ly"
+            },
+            // 函数模型
+            methods: {
+                test: function () {
+                    this.name = "yl"
+                }
+            }
+        })
+        console.log(demo)
+        demo.test()
+    </script>
+</body>
+</html>

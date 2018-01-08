@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<!-- var a = 1;
+var b = 5;
+var a = a-b; //a= -4  b = 5
+var b = a+b; //a= -4  b = 1
+var a = b-a; //a = 5  b = 1
+
+a = a^b
+b = b^a
+[a,b] = [b,a] -->
+
+<body>
+    <div id="demo">
+        <!-- $().html() -->
+        <p style="color:red">1.v-text&&{{}}</p>
+        <p v-text="name"></p>
+        <p>{{name}}</p>
+
+        <!-- $().html() -->
+        <p style="color:red">2.v-html</p>
+        <div v-html="html"></div>
+        <!-- <p>{{"{"}}        {{"{"}}      name     {{"}"}}      {{"}"}}</p> -->
+
+        <!-- $().show().hide() -->
+        <p style="color:red">3.v-show</p>
+        <p v-show="bool">display属性值变化显示或者隐藏</p>
+
+        <p style="color:red">4.v-if&&v-else&&v-else-if</p>
+
+        <p v-if="text=='a'">lz</p>
+        <p v-else-if="text=='b'">ly</p>
+        <p v-else-if="text=='c'">ll</p>
+        <p v-else>l</p>
+
+        <p style="color:red">5.v-for</p>
+        <ul>
+            <li v-for="i in arr">{{i}}</li>
+        </ul>
+        <select>
+            <option v-for="a in arr" :value="a">{{a}}</option>
+        </select>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>技能</th>
+                    <th>生活照</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="ar in arr2">
+                    <th>{{ar.name}}</th>
+                    <th>{{ar.skill}}</th>
+                    <th>
+                        <ul>
+                            <li v-for="aa in ar.img"></li>
+                        </ul>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                text: "z",
+                name: "ly",
+                html: "<p>123<span>456</span></p>",
+                bool: true,
+                arr: ['a', 'b', 'c'],
+                arr2: [{
+                    name: "ly",
+                    skill: "ps",
+                    img:["a","b","c"]
+                }, {
+                    name: "ll",
+                    skill: "css",
+                    img:[]
+                }, {
+                    name: "lz",
+                    skill: "js",
+                    img:["a","b"]
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>

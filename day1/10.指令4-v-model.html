@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- M->V -->
+    <!-- V->M  用户动影响V  模型层M动-->
+    <!-- V -->
+
+    <!-- VMMV -->
+    <div id="demo">
+        <p>{{name}}</p>
+        <!-- $().val() -->
+        <input v-model="name" />
+        <select v-model="name">
+            <option value="ly">1</option>
+            <option value="ll">2</option>
+            <option value="lz">3</option>
+        </select>
+        <textarea v-model="name"></textarea>
+
+
+        <input type="range" v-model="num" />
+        <p v-text="num"></p>
+        <p :style="{fontSize:num+'px'}">{{name}}</p>
+    </div>
+    <div class="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            // M
+            data: {
+                name: "ll",
+                num:20
+            } 
+        })
+    </script>
+</body>
+
+</html>
