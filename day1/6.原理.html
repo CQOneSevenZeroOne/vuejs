@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- View -->
+        <p id="name"></p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // 数据模型M
+        var obj = {
+        };//obj.name = "ly"
+        // obj.name
+        // obj['name']
+        // C
+        Object.defineProperty(obj,"name",{
+            //value:"ly"
+            set:function(newValue){
+                console.log("设置值",newValue)
+                document.querySelector("#name").innerHTML = newValue;
+            },
+            get:function(){
+
+            }
+        })
+        //obj.name = "ly"//设置值 触发set
+        obj.name = 1
+        setInterval(function(){
+            obj.name = Math.random();
+        },1000)
+        // 只要值变了，就会触发set回调
+        //console.log(obj.name)//读取值 触发get
+    </script>
+</body>
+</html>

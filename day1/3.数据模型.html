@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <p style="color:red">1.字符串</p>
+        <p>{{str+'ed'}}</p>
+        <p style="color:red">2.数字</p>
+        <p>{{(num+1)/2+"1"}}</p>
+        <p style="color:red">3.布尔值</p>
+        <p>{{!bool?"真的":"假的"}}</p>
+        <p style="color:red">4.数组</p>
+        <p>{{arr}}</p>
+        <p>{{arr[1]}}</p>
+        <p style="color:red">5.对象</p>
+        <p>{{obj.name}}的技能是:{{obj.skill}}</p>
+
+        <p style="color:red">6.属性</p>
+        <!-- id="{{name}}" -->
+        <p :id="str" :name="num">属性</p>
+        <img :src="img" />
+        <link :href="" />
+
+        <p style="color:red">7.html文本</p>
+        <div v-html="html"></div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // $().html
+        // $().attr
+        new Vue({
+            el:"#demo",//id具有唯一性，一般使用id
+            data:{
+                str:"move",
+                num:10,
+                bool:true,
+                arr:['a','b','c'],
+                obj:{
+                    name:"laoy",
+                    skill:"ps"
+                },
+                html:"<p>123<span style='color:green'>456</span></p>",
+                img:"1.jpg"
+            }
+        })
+    </script>
+</body>
+</html>
