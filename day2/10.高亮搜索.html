@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 123
+    ->filter->computed
+    <mark>1</mark>23 -->
+    <div id="demo">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#demo",
+            data:{
+                html:"abcdefabcghihijk",
+                search:""
+            },
+            template:`
+                <div>
+                    <input v-model="search" />
+                    <div v-html="makeHtmlHihgtLight"></div>
+                </div>
+            `,
+            computed:{
+                makeHtmlHihgtLight:function(){
+                    this.search//a
+                    this.html//<mark>a</mark>bc
+                    var arr = this.html.split(this.search);
+                    var newHtml = arr.join("<mark>"+this.search+"</mark>")
+                    console.log(newHtml)
+                    return newHtml
+                }
+            }
+        })
+    </script>
+</body>
+</html>

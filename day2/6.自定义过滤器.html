@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- 在这里运用的自定义过滤器 -->
+        <p>{{name|ed}}</p>
+        <p>{{num|currency}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        //Vue.directive()
+        Vue.filter("ed",function(value){
+            console.log(value)
+            // 返回处理后的值
+            return value.length
+        })
+
+        Vue.filter("currency",function(value){
+            console.log(value)
+            return "￥"+value+".00"
+        })
+        new Vue({
+            el:"#demo",
+            data:{
+                name:"ly",
+                num:100
+            },
+            filters:{
+                ed:function(){
+
+                }
+            }
+            //directives:{}
+        })
+    </script>
+</body>
+</html>

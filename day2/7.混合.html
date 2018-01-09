@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <div>{{name|ed}}</div>
+    </div>
+    <div id="demo2">
+        <div>{{name|ed}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // 服务
+        var Mixin = {
+            data:{
+                name:"ly"
+            },
+            methods:{
+                ajax:function(){
+
+                },
+                getCookie:function(){},
+                getUrlParmas:function(){}
+            },
+            filters:{
+                ed:function(value){
+                    return value+"ed"
+                }
+            }
+        }
+        new Vue({
+            el: "#demo",
+            mixins:[Mixin],
+            methods:{
+
+            }
+        })
+        new Vue({
+            el: "#demo2",
+            mixins:[Mixin]
+        })
+    </script>
+</body>
+
+</html>

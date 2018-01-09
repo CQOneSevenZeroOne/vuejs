@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {},
+            template: `
+                <div>
+                    <p>{{double}}</p> 
+                    <p>{{name}}</p> 
+                    <p>{{num}}</p>    
+                    <p>{{ed}}</p>
+                    <p>{{
+                        ed(num)
+                    }}</p>   
+                </div>
+            `,
+            computed: {
+                // 特殊的数据模型
+                double: function () {
+                    return this.num + this.name
+                },
+                name: function () {
+                    return "ly"
+                },
+                num: function () {
+                    return 2
+                }
+            },
+            methods: {
+                ed: function (value) {
+                    return value+"ed"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
