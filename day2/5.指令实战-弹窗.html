@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/layui.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .hide{
+            display: none
+        }    
+    </style>
+    <div id="demo">
+        <button @click="showDialog" data-method="confirmTrans" class="layui-btn">配置一个透明的询问框</button>
+        <!-- 弹窗体 -->
+        <div :style="{'display':isShowDialog?'block':'none'}" class="hide layui-layer layui-layer-dialog layui-layer-border layui-layer-msg layui-layer-hui" id="layui-layer18" type="dialog"
+            times="18" showtime="20000" contype="string" style="z-index: 19891032; top: 286.5px; left: 211.5px;">
+            <div id="" class="layui-layer-content">大部分参数都是可以公用的
+                <br>合理搭配，展示不一样的风格</div>
+            <span class="layui-layer-setwin"></span>
+            <div class="layui-layer-btn layui-layer-btn-">
+                <a @click="btn0" class="layui-layer-btn0">明白了</a>
+                <a @click="btn1" class="layui-layer-btn1">知道了</a>
+                <a @click="btn2" class="layui-layer-btn2">哦</a>
+            </div>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                isShowDialog:false
+            },
+            methods:{
+                showDialog:function(){
+                    this.isShowDialog = true
+                },
+                hideDialg:function(){
+                    this.isShowDialog = false
+                },
+                btn0:function(){
+                    console.log("明白了")
+                    this.hideDialg()
+                },
+                btn1:function(){
+                    console.log("知道了")
+                    this.hideDialg()
+                },
+                btn2:function(){
+                    console.log("哦")
+                    this.hideDialg()
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

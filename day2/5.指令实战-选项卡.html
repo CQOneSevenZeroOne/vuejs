@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/layui.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="layui-tab" id="demo">
+        <!-- layui-this -->
+        <ul class="layui-tab-title">
+            <li v-for="tab in tabs" :class="{'layui-this':tabId==tab.id}" v-text="tab.name" @click="selectTab(tab.id)"></li>
+        </ul>
+        <!-- layui-show -->
+        <div class="layui-tab-content">
+            <div v-for="content in contents" v-show="tabId==content.id" v-html="content.html"></div>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                tabs: [{
+                    name: "网站设置",
+                    id: 0
+                }, {
+                    name: "用户管理",
+                    id: 1
+                }, {
+                    name: "权限分配",
+                    id: 2
+                }, {
+                    name: "商品管理",
+                    id: 3
+                }, {
+                    name: "订单管理",
+                    id: 4
+                }],
+                contents:[{
+                    html:"1. 高度默认自适应，也可以随意固宽。<br>2. Tab进行了响应式处理，所以无需担心数量多少。",
+                    id:0
+                },{
+                    html:"内容2",
+                    id:1
+                },{
+                    html:"内容3",
+                    id:2
+                },{
+                    html:"内容4",
+                    id:3
+                },{
+                    html:"内容5",
+                    id:4
+                }],
+                tabId:0
+            },
+            methods: {
+                selectTab: function (id) {
+                    console.log(id)
+                    this.tabId = id
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <p style="color:red">1.v-color</p>
+        <p v-color="'blue'">{{name}}</p>
+        <p v-color="'yellow'">{{age}}</p>
+
+        <p style="color:red">2.v-showw</p>
+        <p v-showw="bool">显示或者隐藏</p
+    </div>
+    <div class="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        // 全局定义
+        Vue.directive("color",{
+            bind:function(el,binding){
+                el.style.color = binding.value
+                console.log(el,binding)
+            }
+        })
+        Vue.directive("showw",{
+            bind:function(el,binding){
+                if(binding.value){
+                    el.style.display = "block"
+                }else{
+                    el.style.display = "none"
+                }
+                console.log(el,binding.value)
+            }
+        })
+        // 1.起手式
+        new Vue({
+            // element 选择器
+            el: "#demo", //id和class选择器
+            data: {
+                name: "laozhao",
+                age: 18,
+                bool:true
+            }//数据模型
+        })
+    </script>
+</body>
+
+</html>

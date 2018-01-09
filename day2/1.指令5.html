@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <div v-cloak id="demo">
+        <p style="color:red">1.v-pre</p>
+        <p v-pre>{{name}}</p>
+        <p style="color:red">2.v-cloak</p>
+        <p >{{name}}</p>
+        <p style="color:red">3.v-once</p>
+        <input v-model="name" />
+        <p v-once>{{name}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                name: "ly"
+            }
+        })
+    </script>
+</body>
+
+</html>

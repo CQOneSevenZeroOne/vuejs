@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/layui.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="layui-nav" id="demo">
+        <li class="layui-nav-item">
+            <a href="">最新活动</a>
+        </li>
+        <li class="layui-nav-item layui-this">
+            <a href="javascript:;" @mouseover="showNav1" @mouseout="hideNav1">产品
+                <span class="layui-nav-more"></span>
+            </a>
+            <dl :style="{display:isShowNav1?'block':'none'}" class="layui-nav-child">
+                <dd>
+                    <a href="">选项1</a>
+                </dd>
+                <dd>
+                    <a href="">选项2</a>
+                </dd>
+                <dd>
+                    <a href="">选项3</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="">大数据</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">解决方案
+                <span class="layui-nav-more"></span>
+            </a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="">移动模块</a>
+                </dd>
+                <dd>
+                    <a href="">后台模版</a>
+                </dd>
+                <dd class="layui-this">
+                    <a href="">选中项</a>
+                </dd>
+                <dd>
+                    <a href="">电商平台</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="">社区</a>
+        </li>
+        <span class="layui-nav-bar" style="left: 150px; top: 55px; width: 0px; opacity: 0;"></span>
+    </ul>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#demo",
+            data:{
+                isShowNav1:true,
+            },
+            methods:{
+                showNav1:function(){
+                    console.log("移入")
+                    this.isShowNav1 = true;
+                },
+                hideNav1:function(){
+                    console.log("移出")
+                    this.isShowNav1 = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

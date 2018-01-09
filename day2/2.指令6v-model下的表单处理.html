@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <p style="color:red">1.单选框</p>
+        <input type="radio" value="a" v-model="selectRadio" />
+        <input type="radio" value="b" v-model="selectRadio" />
+        <input type="radio" value="c" v-model="selectRadio" />
+        <p>{{selectRadio}}</p>
+
+        <p style="color:red">2.多选框</p>
+        <input type="checkbox" value="a" v-model="selectCheckbox" />
+        <input type="checkbox" value="b" v-model="selectCheckbox" />
+        <input type="checkbox" value="c" v-model="selectCheckbox" />
+        <p>{{selectCheckbox}}</p>
+    </div>
+    <div class="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        // 1.起手式
+        new Vue({
+            // element 选择器
+            el: "#demo", //id和class选择器
+            data: {
+                selectRadio:"b",
+                selectCheckbox:["a","c"]
+            } //数据模型
+        })
+    </script>
+</body>
+
+</html>
