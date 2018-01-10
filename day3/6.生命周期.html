@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component("xtest",{
+            template:`
+                <div>测试组件</div>
+            `,
+            beforeDestroy:function(){
+                console.log("-----------beforeDestroy------------")
+            },
+            destroyed:function(){
+                console.log("-----------destroyed------------")
+            }
+
+        })
+        new Vue({
+            el:"#demo",
+            // M
+            data:{
+                name:"ly",
+                bool:true
+            },
+            // V
+            template:`
+                <div>
+                    <input v-model="name" />
+                    <p>{{name}}</p> 
+                    <button @click="bool=!bool">ok</button>  
+                    <xtest v-if="bool"></xtest> 
+                </div>
+            `,
+            // 在实例初始化之后
+            beforeCreate:function(){
+                //this.name = "ll"
+                console.log("-----------beforeCreate------------")
+                console.log(this.$el)
+                console.log(this.$data)
+            },
+            // 在实例创建完成后被立即调用
+            created:function(){
+                this.name = "ll"
+                console.log("-----------created------------")
+                console.log(this.$el)
+                console.log(this.$data)
+            },
+            beforeMount:function(){
+                console.log("-----------beforeMount------------")
+                console.log(this.$el)
+                console.log(this.$data)
+            },
+            // 一般挂载之后做逻辑
+            mounted:function(){
+                console.log("-----------mounted------------")
+                console.log(this.$el)
+                console.log(this.$data)
+            },
+            beforeUpdate:function(){
+                console.log("-----------beforeUpdate------------")
+                console.log(this.$el)
+                console.log(this.$data)
+            },
+            updated:function(){
+                console.log("-----------updated------------")
+                console.log(this.$el)
+                console.log(this.$data)
+            }
+        })
+    </script>
+</body>
+</html>
