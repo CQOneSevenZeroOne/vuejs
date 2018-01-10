@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component("xheader", {
+            template: `
+                <div>
+                    <header :style="{border:'1px solid red',padding:'10px'}">
+                        123
+                    </header>
+                    <div>
+                        <slot></slot>
+                    </div>
+                </div>
+            `
+        })
+        new Vue({
+            el:"#demo",
+            data:{},
+            template:`
+                <div>
+                    <xheader>
+                        <p>今日头条</p>
+                    </xheader>
+                </div>
+            `
+        })
+    </script>
+</body>
+</html>

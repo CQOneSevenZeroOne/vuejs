@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component("xheader", {
+            props:["message","skill"],
+            template: `
+                <header :style="{border:'1px solid red',padding:'10px'}">
+                    头部组件:{{message}} {{skill}}
+                    <xchild :message="message"></xchild>
+                </header>
+            `
+        })
+        Vue.component("xchild", {
+            props:["message"],
+            template: `
+                <div :style="{border:'1px solid green',padding:'10px'}">
+                    <p>{{message}}</p>
+                    <input v-model="name" />
+                    <p>{{name}}</p>
+                </div>
+            `,
+            // data在组件里面必须是函数
+            data:function(){
+                return {
+                    name:"子组件1"
+                }
+            }
+        })
+
+        // new Vue其实是根组件 Vue.component是new Vue的特殊呈现
+        new Vue({
+            el:"#demo",
+            data:{
+                name:"组件"
+            },
+            template: `
+                <div style="border:1px solid blue;padding:10px">
+                    <input v-model="name" />
+                    <p>{{name}}</p>
+                    <xheader :message="name" skill="ps"></xheader>
+                </div>
+            `,
+        })
+    </script>
+</body>
+</html>

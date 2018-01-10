@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component("xheader", {
+            template: `
+                <header :style="{border:'1px solid red',padding:'10px'}">
+                    头部组件
+                    <xchild></xchild>
+                    <xchild></xchild>
+                    <xchild></xchild>
+                </header>
+            `
+        })
+        Vue.component("xchild", {
+            template: `
+                <div>
+                    <input v-model="name" />
+                    <p :style="{border:'1px solid green',padding:'10px'}">{{name}}</p>
+                </div>
+            `,
+            // data在组件里面必须是函数
+            data:function(){
+                return {
+                    name:"子组件1"
+                }
+            },
+            // directives,
+            // filters,
+            // computed,
+            // components
+        })
+
+        // new Vue其实是根组件 Vue.component是new Vue的特殊呈现
+        new Vue({
+            el:"#demo",
+            data:{
+                name:"组件"
+            },
+            template: `
+                <div style="border:1px solid blue;padding:10px">
+                    <p>{{name}}</p>
+                    <xheader></xheader>
+                </div>
+            `,
+        })
+    </script>
+</body>
+</html>

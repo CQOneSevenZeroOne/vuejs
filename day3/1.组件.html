@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        // Vue.filter(,function(){})
+        // Vue.directive(,{})
+        // Vue.component
+        // Vue.component生产一个名为xheader的标签
+        // 1)它是对一整段的html文档封装，方便复用和维护
+        // 命名不要用浏览器已经有的标签
+
+        // 全局
+        // aBc a-b-c
+        // DIV div
+        Vue.component("xheader", {
+            template: `
+                <header :style="{border:'1px solid red'}">头部组件</header>
+            `
+        })
+        new Vue({
+            el: "#demo",
+            template: `
+                <div>
+                    <p>{{name}}</p>
+                    <xheader></xheader>
+                    <xheader></xheader>
+                    <xheader></xheader>
+                    <xheader></xheader>
+                    <x-footer></x-footer>
+                </div>
+            `,
+            data: {
+                name: "组件"
+            },
+            // 局部
+            components: {
+                "x-footer": {
+                    template: `
+                        <footer :style="{border:'1px solid blue'}">底部组件</footer>
+                    `
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
