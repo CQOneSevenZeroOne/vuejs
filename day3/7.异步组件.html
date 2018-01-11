@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script>
+        // 实现异步加载js文件
+        function load(componentName, path) {
+            return new Promise(function (resolve, reject) {
+                var script = document.createElement('script');
+                script.src = path;
+                script.async = true;
+                script.onload = function () {
+                    var component = Vue.component(componentName);
+                    if (component) {
+                        resolve(component);
+                    } else {
+                        reject();
+                    }
+                };
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        }
+        new Vue({
+            el: "#demo",
+            template: `
+                <div>
+                    <p>{{name}}</p>
+                    <xheader></xheader>
+                </div>
+            `,
+            data: {
+                name: "组件"
+            },
+            components: {
+                xheader: function (resolve, reject) {
+                    // 这里可以用异步方法实现异步加载组件
+                    setTimeout(function(){
+                        load('xheader', 'xheader.js').then(resolve, reject);
+                    },3000)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

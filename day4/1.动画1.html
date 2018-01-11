@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        p{
+            font-size: 30px;
+        }
+        .abc-enter-active,.abc-leave-active{
+            transition: all 1s;
+        }
+        .abc-enter,.abc-leave-to{
+            opacity: 0;
+            font-size: 0;
+        }
+        .abc-enter-to,.abc-leave{
+            opacity: 1;
+            font-size: 30px;
+        }
+    </style>
+    <div id="demo">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#demo",
+            data:{
+                name:"a",
+                bool:true
+            },
+            template:`
+                <div>
+                    <button @click="change">ok</button>
+                    <p style="color:red">1.v-show</p>
+                    <transition name="abc">
+                        <p v-show="bool">{{name}}</p>  
+                    </transition>
+                    <p style="color:red">2.v-if</p>
+                    <p v-if="bool">{{name}}</p>     
+                </div>
+            `,
+            methods:{
+                change:function(){
+                    this.bool = !this.bool
+                }
+            }
+        })
+    </script>
+</body>
+</html>
