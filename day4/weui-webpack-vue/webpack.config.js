@@ -66,7 +66,15 @@ module.exports = {
     // 插件
     plugins: [
         // 压缩JS文件
-        new webpack.optimize.UglifyJsPlugin(),
-        new HtmlWebpackPlugin({template: './template/index.html'})
-    ]
+        // new webpack.optimize.UglifyJsPlugin(),
+        new HtmlWebpackPlugin({
+            template: './template/index.html'
+        })
+    ],
+    // 配置服务器
+    devServer: {
+        contentBase: "./public",
+        inline: true, //自动刷新
+        port: 12345
+    }
 };
