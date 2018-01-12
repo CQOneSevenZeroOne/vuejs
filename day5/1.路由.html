@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <!-- $ -->
+    <!-- Vue -->
+    <script src="vue.js"></script>
+    <!-- VueRouter -->
+    <script src="vue-router.js"></script>
+    <script>
+        var router = new VueRouter({
+            routes:[{
+                path: '/foo',
+                component: {
+                    template:`
+                        <div>
+                            <select v-model="shopId">
+                                <option value="1">电脑</option>
+                                <option value="2">手机</option>
+                                <option value="3">平板</option>
+                            </select>
+                            <input type="num" v-model="num" />
+                            <a :href="'#/bar/'+shopId+'/'+num">购买</a>
+                        </div>
+                    `,
+                    data(){
+                        return {
+                            shopId:2,
+                            num:1
+                        }
+                    }
+                }
+            },
+            {
+                path: '/bar/:id/:num',
+                component: {
+                    template:`
+                        <div>组件二</div>
+                    `,
+                    mounted(){
+                        console.log(this.$route.params)
+                    }
+                }
+            }
+        ]})
+        new Vue({
+            el: "#demo",
+            data: {},
+            template: `
+                <div>
+                    <router-view></router-view>    
+                </div>
+            `,
+            router:router
+        })
+    </script>
+</body>
+
+</html>
