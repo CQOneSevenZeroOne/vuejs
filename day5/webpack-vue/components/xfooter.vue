@@ -30,6 +30,9 @@ export default {
       return {
           img:require("../images/test.jpg")
       }
+  },
+  mounted(){
+      console.log(this.$store.state)
   }
 }
 </script>

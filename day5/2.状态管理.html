@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .sildebar {
+            top: 0;
+            width: 200px;
+            position: fixed;
+            height: 100%;
+            z-index: 501;
+            background-color: green;
+        }
+    </style>
+    <div id="demo"></div>
+    <script src="vue.js"></script>
+    <script src="vuex.js"></script>
+    <script>
+        // 公有数据
+        var store = new Vuex.Store({
+            state: {
+                count: 0,
+                bool:false
+            }
+        })
+        Vue.component("xheader", {
+            template: `
+                <div style="border:1px solid red;float:right">
+                    <button @click="toggle">ok</button>
+                </div>
+            `,
+            // 私有数据
+            data: function () {
+                return {
+                    name: "头部组件"
+                }
+            },
+            methods:{
+                toggle:function(){
+                    this.$store.state.bool = !this.$store.state.bool
+                }
+            },
+            mounted:function(){
+                console.log(this.$store.state)
+            }
+        })
+        Vue.component("xsildebar", {
+            template: `
+                <div v-show="bool" class="sildebar">
+                  
+                </div>
+            `,
+            data: function () {
+                return {
+                    name: "底部组件"
+                }
+            },
+            computed:{
+                bool:function(){
+                    return this.$store.state.bool
+                }
+            }
+        })
+        new Vue({
+            el: "#demo",
+            template: `
+                <div>
+                    <xheader />
+                    <xsildebar />
+                </div>
+            `,
+            store:store
+        })
+    </script>
+</body>
+
+</html>

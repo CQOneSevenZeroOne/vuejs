@@ -2,10 +2,14 @@ import Vue from "vue";
 // 路由
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+// 状态管理
+import Vuex from 'vuex'
+Vue.use(Vuex)
 
 import "weui";
 // 全局样式
 import "./template/base.css";
+
 
 
 // 选项卡组件
@@ -21,34 +25,49 @@ import chat from "./components/container/chat.vue";
 // 配置路由
 var router = new VueRouter({
     routes: [{
-        path: "/tab",
-        component: tab,
-        children: [{
-                path: 'wechat',
-                component: wechat
-            },
-            {
-                path: 'discovery',
-                component: discovery
-            },
-            {
-                path: 'contact',
-                component: contact
-            },
-            {
-                path: 'mine',
-                component: mine
-            }
-        ]
-    }, {
-        path: "/chat",
-        component: chat
-    }]
+            path: "/tab",
+            component: tab,
+            children: [{
+                    path: 'wechat',
+                    component: wechat
+                },
+                {
+                    path: 'discovery',
+                    component: discovery
+                },
+                {
+                    path: 'contact',
+                    component: contact
+                },
+                {
+                    path: 'mine',
+                    component: mine
+                }
+            ]
+        }, {
+            path: "/chat",
+            component: chat
+        }, // 默认进入页面的时候跳转到
+        {
+            path: '/',
+            redirect: '/tab/wechat'
+        }
+    ]
+})
+
+// 配置store
+var store = new Vuex.Store({
+    state:{
+        title:"今日头条",
+        bool:true,
+        skill:"ps"
+    }
 })
 
 new Vue({
     el: "#app",
     router,
+    store,
     template: `
         <div>
             <router-view></router-view> 
